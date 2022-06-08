@@ -321,5 +321,119 @@ let coc = 2;
 coc = coc === 0 ? 1 : coc < 0 ? 'less then zero' : coc * 10; //так правильней
 console.log(coc);
 
+// Cycle ==================================================================================
+
+/**
+ * На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова
+ *
+ * будут в верхнем регистре. Использовать for или while.
+ */
+
+let stringi = 'i am in the easycode';
+let res = '';
+
+let i = 0;
+while (i < stringi.length) {
+  if (stringi[i] == 0 || stringi[i - 1] == ' ') {
+    res += stringi[i].toUpperCase();
+  } else {
+    res += stringi[i];
+  }
+  i++;
+}
+
+console.log(res);
+
+
+
+/**
+ * Дана строка “tseb eht ma i”. Используя циклы, сделать строку-перевертыш
+ * (то есть последняя буква становится первой, предпоследняя - второй итд).
+ */
+
+let normStr = 'tseb eht ma i';
+let newStr = '';
+
+for (let i = normStr.length - 1; i >= 0; i--) {
+  newStr += normStr[i];
+}
+
+console.log(newStr);
+
+/**
+ * Факториал числа - произведение всех натуральных чисел от 1 до n
+ * включительно: 3! = 3*2*1, 5! = 5*4*3*2*1. С помощью циклов вычислить
+ * факториал числа 10. Использовать for.
+ */
+let fact = 1;
+for (let i = 1; i <= 10; i++) {
+  fact *= i;
+}
+console.log(fact);
+
+/**
+ * На основе строки “JavaScript is a pretty good language” сделать новую строку,
+ * где каждое слово начинается с большой буквы, а пробелы удалены. Использовать for.
+ */
+
+let gogr = 'JavaScript is a pretty good languag';
+let newGogr = '';
+
+for (let i = 0; i < gogr.length; i++) {
+  if (gogr[i] == ' ') {
+    continue;
+  } else if (gogr[i - 1] == ' '){
+    newGogr += gogr[i].toUpperCase();
+  } else {
+    newGogr += gogr[i];
+  }
+}
+
+console.log(newGogr);
+
+
+/**
+ * Найти все нечетные числа в массиве от 1 до 15 включительно и вывести их в консоль.
+ * Массив [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] Использовать for of.
+ */
+
+let arrNumb = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+for (let value of arrNumb) {
+  if (value % 2 == 0) {
+    continue;
+  } else {
+    console.log(value);
+  }
+}
+
+// так лучше
+for (let value of arrNumb) {
+  if (value % 2) {
+    console.log(value);
+  }
+}
+
+/**
+ * Перебрать объект и если значение в свойстве это строка то переписать
+ * ее всю в верхнем регистре. Использовать for in.
+ */
+
+
+let list = {
+  name: 'denis',
+  work: 'easycode',
+  age: 29,
+};
+
+for (let key in list) {
+  if (typeof(list[key]) == 'string') {
+    list[key] = list[key].toUpperCase();
+  }
+}
+
+console.log(list);
+
 //==================================================================================
+
 
