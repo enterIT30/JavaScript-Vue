@@ -84,5 +84,27 @@ let stringNum2 = `${a}${b}`;
 console.log(stringNum1, stringNum2);
 
 //==================================================================================
+/* 
+let str = 'some test string';
+let newStr = str.replace(/s/g, 'p');
+console.log(newStr); */
 
+// Object ==================================================================================
+
+let obj = {
+  product: 'iphone',
+};
+
+obj.price = 1000;
+obj.current = 'dollar';
+/*
+obj[price] = 1000;
+obj[current] = 'dollar';
+ */
+obj.details = {};
+
+obj.details.model = 3300;
+obj.details.color = 'blue';
+
+//==================================================================================
 
