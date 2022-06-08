@@ -248,5 +248,78 @@ if (parseInt(product.price) >= minPr && parseInt(product.price) <= maxPr) {
   console.log('товаров не найдено');
 }
 
+// Ternary operator ==================================================================================
+
+
+/**
+ * Записать в виде switch case следующее условие:
+ * if (a === 'block') {
+ *  console.log('block')
+ * } else if (a === 'none') {
+ *  console.log('none')
+ * } else if (a === 'inline') {
+ *  console.log('inline')
+ * } else {
+ *  console.log('other')
+ * }
+ */
+
+let display = 'none';
+
+switch(display) {
+  case 'block':
+    console.log('block');
+    break;
+  case 'none':
+    console.log('none');
+    break;
+  case 'inline':
+    console.log('inline');
+    break;
+  default:
+    console.log('other');
+}
+
+/**
+ * Записать данное условие в виде тернарного оператора
+ *
+ * let b = 'hidden';
+ *
+ * if (b === 'hidden') {
+ *  b = 'visible';
+ * } else {
+ *  b = 'hidden';
+ * }
+ */
+
+let bob = 'hidden';
+
+//bob === 'hidden' ? bob = 'visible' : bob = 'hidden';
+
+bob = bob === 'hidden' ? 'visible' : 'hidden'; //так правильней
+
+console.log(bob);
+
+/**
+ * Записать данное условие в виде тернарного оператора
+ *
+ * let c = 0;
+ *
+ * if (c === 0) {
+ *  c = 1;
+ * } else if (c < 0) {
+ *  c = 'less then zero';
+ * } else {
+ *  c *= 10;
+ * }
+ */
+
+let coc = 2;
+
+//coc === 0 ? coc = 1 : coc < 0 ? coc = 'less then zero' : coc *= 10;
+
+coc = coc === 0 ? 1 : coc < 0 ? 'less then zero' : coc * 10; //так правильней
+console.log(coc);
+
 //==================================================================================
 
