@@ -482,3 +482,56 @@ console.log(reverseString(null));
 console.log(reverseString(undefined));
 console.log(reverseString());
 
+/**
+ * Создайте функцию, которая в качестве аргумента может принять строку, числа, null или
+ * undefined и возвращает строку, где каждый символ разделен пробелом и заменен на юникод-значение символа
+ */
+
+function getCodeStringFromText(str) {
+  str = String(str);
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    newStr += `${str[i].charCodeAt()} ` ;
+  }
+  return newStr.trim();
+}
+
+console.log(getCodeStringFromText("hello"));
+
+/**
+ * Создать функцию угадай число
+ *
+ * Она принимает число от 1-10(обязательно проверить, что число не больше 10 и не меньше 0).
+ * Если число не соответствует условию то верните ошибку return new Error ("Please provide number in range 0 - 10").
+ * Если передано не число, то верните ошибку return new Error ("Please provide a vaild number");
+ *
+ * Далее, функция генерирует рандомное число от 1-10 и сравнивает с заданным числом, если они совпали
+ * то возвращать строку "You win!", если нет, то строку 'You are lose, your number is 8, the random number is 5'.
+ *
+ * Если передано число в виде строки, то преобразовать к числу.
+ */
+
+function guessTheNumber(num) {
+  let ret;
+  let number = num;
+  if (typeof(number) === 'string' && !Number.isNaN(+number)) {
+    number = +number;
+  }
+  if (typeof(number) !== 'number') {
+    ret = new Error ("Please provide a vaild number");
+  } else if (number < 1 || number > 10) {
+    ret = new Error ('Please provide number in range 0 - 10');
+  } else {
+    let random = Math.floor(Math.random() * 10);
+    if (random == number) {
+      ret = "You win!";
+    } else {
+      ret = `You are lose, your number is ${number}, the random number is ${random}`;
+    }
+  }
+  return ret;
+}
+
+console.log(guessTheNumber(null));
+
+//==================================================================================
