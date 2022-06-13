@@ -434,6 +434,51 @@ for (let key in list) {
 
 console.log(list);
 
-//==================================================================================
+// Function ==================================================================================
 
+console.clear();
+
+/**
+ * Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение
+ * Если нет ни одного аргумента, то вернуть нуль
+ */
+function multiply() {
+  let sumArg = 1;
+  if (!arguments.length) {
+    return 0;
+  } else {
+    for (let i = 0; i < arguments.length; i++) {
+      sumArg *= arguments[i];
+    }
+  }
+
+  return sumArg;
+}
+
+console.log(multiply(2, 4, 5, 6));
+
+multiply();
+
+
+/**
+ * Создайте функцию, которая принимает строку и возвращает строку перевертыш
+ */
+
+function reverseString(str) {
+/*   if (typeof(str) !== string) {
+
+  } */
+  str = String(str);
+  let newStr = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+  return newStr;
+}
+
+console.log(reverseString('test'));
+console.log(reverseString(''));
+console.log(reverseString(null));
+console.log(reverseString(undefined));
+console.log(reverseString());
 
