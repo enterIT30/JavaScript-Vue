@@ -703,3 +703,31 @@ function handler4(el) {
 
 console.log(firstFunc(['abs', '123'], handler4));
 
+/**
+ * Написать аналог метода every. Создайте функцию every, она должна принимать первым аргументом массив чисел,
+ * (обязательно проверить, что передан массив), вторым аргументом callback (обязательно проверить, что передана
+ * функция). Если передан один из аргументов не удовлетворяет условию, то функция должна вернуть
+ * new Error("С произволным сообщением")
+ *
+ * Функция должна возвращать true или false в зависимости от результата вызова callback (проверить число больше 5).
+ * Callback должен принимать один элемент массива, его индекс в массиве и весь массив.
+ */
+
+console.clear();
+
+function every(arr, fn) {
+  if (!Array.isArray(arr) || typeof(fn) !== 'function' || !fn) {
+    return new Error("С произволным сообщением");
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (!fn(arr[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+console.log(every([65, 54, 44, 22, 15], function (el) {
+  return typeof el === 'number';
+}));
