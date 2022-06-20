@@ -885,14 +885,14 @@ console.clear();
  * (в методе reduce тоже использовать arrow function):
  */
 
-const sum = (...args) => {
+const sums = (...args) => {
   const params = Array.prototype.slice.call(args);
   if (!params.length) return 0;
   return params.reduce((prev, next) => { return prev + next; });
 };
 
-console.log(sum(1, 2, 3, 4)); // 10
-console.log(sum()); // 0
+console.log(sums(1, 2, 3, 4)); // 10
+console.log(sums()); // 0
 
 /**
  * Переделать функцию с использованием функции-стрелки
@@ -909,4 +909,245 @@ const convertToObject = (num) => {
 
 console.log(convertToObject(11));
 
+//array methods ==================================================================================
+
+console.clear();
+
+/**
+ * На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
+ * каждый элемент которого будет хранить информацию о числе и его четности:
+ * [{digit: 1, odd: true}, {digit: 2, odd: false}, {digit: 3, odd: true}...]
+ */
+
+let arr = [1, 2, 3, 5, 8, 9, 10];
+
+let newArr = arr.map((item) => (
+  {
+    digit: item,
+    odd: !Boolean(item % 2),
+  })
+);
+
+console.log(newArr);
+
+
+/**
+ * Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть true.
+ */
+
+let arr2 = [12, 4, 50, 1, 1, 18, 40].some(item => {
+  return item == 0;
+});
+
+console.log(arr2);
+
+/**
+ * Проверить, все элементы массива имеют длину более 3х символов
+ * ['yes', 'hello', 'no', 'easycode', 'what']. Если да - вернуть true
+ */
+
+let arr3 = ['yes', 'hello', 'no', 'easycode', 'what'].every(item => {
+  return item.length > 3;
+});
+
+console.log(arr3);
+
+/**
+ * Дан массив объектов, где каждый объект содержит информацию о букве и месте
+ * её положения в строке {буква: “a”, позиция_в_предложении: 1}:
+ *
+ * Напишите функцию, которая из элементов массива соберет и вернёт
+ * строку, основываясь на index каждой буквы. Например:
+ * [{char:"H",index:0}, {char:"i",index: 1}, {char:"!",index:2}] → “Hi!”
+ */
+
+let wordLetter = [{char:"a",index:12}, {char:"w",index:8}, {char:"Y",index:10}, {char:"p",index:3}, {char:"p",index:2},
+{char:"N",index:6}, {char:" ",index:5}, {char:"y",index:4}, {char:"r",index:13}, {char:"H",index:0},
+{char:"e",index:11}, {char:"a",index:1}, {char:" ",index:9}, {char:"!",index:14}, {char:"e",index:7}];
+
+function hyunction(arr) {
+  let newWordLetter = wordLetter.sort((prev, next) => prev.index - next.index);
+  return newWordLetter.map(item => item.char).join('');
+}
+console.log(hyunction(wordLetter));
+
+/**
+ * Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной):
+ */
+
+let arriva = [ [14, 45], [1], ['a', 'c', 'd'] ];
+arriva.sort((next, prev) => next.length - prev.length);
+console.log(arriva);
+
+//→ [ [1], [14, 45], ['a', 'c', 'd'] ]
+
+/**
+ * Есть массив объектов. Отсортировать их по возрастающему количеству ядер (cores).
+ */
+
+let arrObjikaishen = [
+  {cpu: 'intel', info: {cores:2, сache: 3}},
+  {cpu: 'intel', info: {cores:4, сache: 4}},
+  {cpu: 'amd', info: {cores:1, сache: 1}},
+  {cpu: 'intel', info: {cores:3, сache: 2}},
+  {cpu: 'amd', info: {cores:4, сache: 2}}
+];
+
+arrObjikaishen.sort((prev, next) => (prev.info.cores - next.info.cores));
+
+console.log(arrObjikaishen);
+
+/**
+ * Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна
+ * вернуть все продукты, цена которых находится в указанном диапазоне, и сортировать от дешевых к дорогим:
+ *
+ * filterCollection(products, 15, 30) → [{...price: 15}, {...price: 18.9}, {...price: 19}, {...price: 25}]
+ */
+
+let productos = [
+  {
+    title: 'prod1',
+    price: 5.2
+  },
+  {
+    title: 'prod2',
+    price: 0.18
+  },
+  {
+    title: 'prod3',
+    price: 15
+  },
+  {
+    title: 'prod4',
+    price: 25
+  },
+  {
+    title: 'prod5',
+    price: 18.9
+  },
+  {
+    title: 'prod6',
+    price: 8
+  },
+  {
+    title: 'prod7',
+    price: 19
+  },
+  {
+    title: 'prod8',
+    price: 63
+  }
+];
+
+function sortProductos(arr, price1, price2) {
+  let filt = arr.filter(item => item.price >= price1 &&item.price <= price2);
+  return filt.sort((prev, next) => prev.price - next.price);
+}
+
+console.log(sortProductos(productos, 5, 20));
+
 //==================================================================================
+
+let arr100 = [12, 4, 50, 1, 0, 18, 40];
+
+// forEach(elem, index, arr)
+let arr101 = arr100.forEach((elem) => {
+  return elem * 2;
+});
+
+console.log(arr101); //undefined
+
+// map(elem, index, arr) новый массив
+let arr102 = arr100.map((elem) => {
+  return elem * 2;
+});
+console.log(arr102); // [24,  8, 100, 2, 0, 36,  80]
+
+// map массив объектов
+let arr103 = arr100.map((elem, index) => (
+  {
+    name: `${index}`,
+    age: elem,
+  }
+  ));
+
+console.log(arr102); // [{ name: '0', age: 12 }, { name: '1', age: 4 }, { name: '2', age: 50 }, { name: '3', age: 1 }, { name: '4', age: 0 }, { name: '5', age: 18 },{ name: '6', age: 40 }]
+
+// filter(elem, index, arr) новый массив
+let arr104 = arr100.filter((elem) => {
+  return elem > 8;
+});
+
+console.log(arr104); //[ 12, 50, 18, 40 ]
+
+// reduce(acc, elem, index, arr), start value) новый массив
+let arr105 = arr100.reduce((acc, elem) => {
+  return acc += elem;
+}, 0);
+
+console.log(arr105); // 125
+
+// reduce объект-объектов
+let arrObj = [
+  {
+    num: 12,
+    pum: 4,
+    dum: 50,
+    srum: 1,
+  },
+  {
+    num: 666,
+    pum: 777,
+    dum: 69,
+    srum: 0,
+  }
+];
+let arr106 = arrObj.reduce((acc, elem) => {
+  acc[elem.srum] = elem;
+  return acc;
+}, {});
+
+console.log(arr106);
+/*
+{
+  '0': { num: 666, pum: 777, dum: 69, srum: 0 },
+  '1': { num: 12, pum: 4, dum: 50, srum: 1 }
+}
+*/
+
+// some/every(elem, index, arr)
+
+// хотя бы один
+let arr107 = arr100.some((elem) => {
+  return elem > 40;
+});
+
+console.log(arr107); // true
+
+// все
+let arr108 = arr100.every((elem) => {
+  return elem > 10;
+});
+
+console.log(arr108); // false
+
+
+// find(elem, index, arr)
+let arr109 = arrObj.find((elem) => {
+  return elem.pum == 777;
+});
+
+console.log(arr109); // { num: 666, pum: 777, dum: 69, srum: 0 }
+
+// sort() изменяет исходный массив (сортирует по лексическому значению)
+
+let arr111 = arr100.sort();
+
+console.log(arr111); // [0, 1, 12, 18, 4, 40, 50 ] (сортирует по лексическому значению)
+console.log(arr100); // [0, 1, 12, 18, 4, 40, 50 ] изменяет исходный массив
+
+// sort()
+let arr100 = [12, 4, 50, 1, 0, 18, 40];
+let arr112 = arr100.sort((prev, next) => prev - next);
+console.log(arr112); // [0,  1,  4, 12, 18, 40, 50]
+console.log(arr100); // [0,  1,  4, 12, 18, 40, 50]
