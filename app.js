@@ -436,8 +436,6 @@ console.log(list);
 
 // Function ==================================================================================
 
-console.clear();
-
 /**
  * Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение
  * Если нет ни одного аргумента, то вернуть нуль
@@ -713,8 +711,6 @@ console.log(firstFunc(['abs', '123'], handler4));
  * Callback должен принимать один элемент массива, его индекс в массиве и весь массив.
  */
 
-console.clear();
-
 function every(arr, fn) {
   if (!Array.isArray(arr) || typeof(fn) !== 'function' || !fn) {
     return new Error("С произволным сообщением");
@@ -880,5 +876,37 @@ console.log(getElementHeight.apply(element)); */ // undefined
 let getElementHeight = element.getHeight.bind(element);
 getElementHeight();
 
-//==================================================================================
+// arrow function ==================================================================================
 
+console.clear();
+
+/**
+ * Переделать функцию с использованием функции-стрелки
+ * (в методе reduce тоже использовать arrow function):
+ */
+
+const sum = (...args) => {
+  const params = Array.prototype.slice.call(args);
+  if (!params.length) return 0;
+  return params.reduce((prev, next) => { return prev + next; });
+};
+
+console.log(sum(1, 2, 3, 4)); // 10
+console.log(sum()); // 0
+
+/**
+ * Переделать функцию с использованием функции-стрелки
+ */
+
+const convertToObject = (num) => {
+  const obj = {
+      value: num,
+      isOdd: Boolean(num % 2)
+  };
+
+  return obj;
+};
+
+console.log(convertToObject(11));
+
+//==================================================================================
